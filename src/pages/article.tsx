@@ -1,17 +1,10 @@
 import { Link } from 'wouter';
-import { motion } from 'framer-motion';
 import { 
   ArrowRight, 
-  Activity, 
-  ShieldAlert, 
-  Zap, 
   Cpu, 
   Volume2, 
-  Gauge, 
-  TrendingUp, 
   CheckCircle2, 
   AlertTriangle,
-  Info,
   BookOpen,
   ArrowUpRight
 } from 'lucide-react';
