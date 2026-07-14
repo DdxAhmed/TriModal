@@ -9,7 +9,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,255,65,0.08)_0%,transparent_70%)]" />
       
       {/* Grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.03)_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div 
@@ -22,25 +22,25 @@ export function Hero() {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tight mb-8 text-foreground glow-text leading-[1.2]">
-            كسر قالب الحماية<br />التقليدية.
+            Breaking the Mold of<br />Traditional Protection.
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground font-sans max-w-3xl leading-relaxed mb-12">
-            الانتقال من انتظار احتراق ملفات المحرك إلى التشخيص اللحظي لأعطال الأجهزة في نطاق الميكروثانية باستخدام دمج متعدد الفيزياء يعمل بالكامل على متحكم <span dir="ltr" className="font-mono">ESP32</span>.
+            Transitioning from waiting for motor windings to burn to microsecond-level edge diagnostics using bare-metal multi-physics sensor fusion on the <span dir="ltr" className="font-mono">ESP32</span>.
           </p>
           
           <div className="flex flex-wrap gap-4 font-mono text-sm">
             <div className="flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-3 shadow-[inset_0_0_20px_rgba(0,255,65,0.05)]">
               <Zap className="text-primary w-5 h-5" />
-              <span className="text-foreground">بدون خوادم سحابية</span>
+              <span className="text-foreground">Cloudless Edge AI</span>
             </div>
             <div className="flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-3 shadow-[inset_0_0_20px_rgba(0,255,65,0.05)]">
               <Activity className="text-primary w-5 h-5" />
-              <span className="text-foreground">دمج متعدد الفيزياء</span>
+              <span className="text-foreground">Multi-Physics Fusion</span>
             </div>
             <div className="flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-3 shadow-[inset_0_0_20px_rgba(0,255,65,0.05)]">
               <ShieldAlert className="text-primary w-5 h-5 animate-pulse-fast" />
-              <span className="text-foreground font-bold">عزل في أقل من 5 ملي ثانية</span>
+              <span className="text-foreground font-bold">Trip Command &lt; 5ms</span>
             </div>
           </div>
         </div>

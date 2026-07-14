@@ -5,47 +5,47 @@ export function Intelligence() {
   const { ref, isVisible } = useReveal();
 
   return (
-    <section className="py-32 md:py-48 border-b border-border/30 bg-black relative">
+    <section className="py-32 md:py-48 border-b border-border/30 bg-black relative" dir="ltr">
       <div className="container mx-auto px-6">
         <div ref={ref} className={`grid grid-cols-1 xl:grid-cols-2 gap-16 xl:gap-24 items-center ${isVisible ? 'reveal-visible' : 'reveal-hidden'}`}>
           
           <div>
             <h2 className="text-sm font-mono text-primary tracking-widest mb-4 border-s-2 border-primary ps-4">
-              المعالجة // على_الجهاز
+              ON_DEVICE // EDGE_PROCESSING
             </h2>
             <h3 className="text-4xl md:text-5xl font-sans font-bold mb-8 text-foreground">
-              تكيّف مستمر دون سحابة
+              Continuous Offline Adaptation
             </h3>
             
             <p className="text-muted-foreground text-xl mb-10 leading-relaxed font-sans">
-              تكلف الرحلات السحابية أجزاء من الثانية ثمينة وتتطلب استقراراً في الشبكة. لقد تخلصنا منها. 
-              كتلة التجميع التدريجي المستمر (<strong className="text-foreground" dir="ltr">Streaming Incremental K-Means</strong>) الخاصة بنا تعمل بالكامل داخل ذاكرة <span dir="ltr">SRAM</span> النشطة.
+              Cloud trips waste valuable milliseconds and demand absolute network stability. We eliminated them. 
+              Our Streaming Incremental K-Means engine operates entirely inside active SRAM.
             </p>
             
             <ul className="space-y-6 font-mono text-sm md:text-base text-muted-foreground">
               <li className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0 p-1 border border-primary/30 bg-primary/10">
+                <div className="mt-1 shrink-0 p-1 border border-primary/30 bg-primary/10">
                   <Network className="w-4 h-4 text-primary" />
                 </div>
-                <span>تطور مستمر للنموذج دون إعادة تدريب كاملة. يتكيف مع التآكل الميكانيكي على مدار سنوات من التشغيل.</span>
+                <span>Continuous model updates without full retraining. Adapts to mechanical wear over years of machine operation.</span>
               </li>
               <li className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0 p-1 border border-primary/30 bg-primary/10">
+                <div className="mt-1 shrink-0 p-1 border border-primary/30 bg-primary/10">
                   <Server className="w-4 h-4 text-primary" />
                 </div>
-                <span>أمان تام بفضل التصميم المعزول. يحمي البنية التحتية الصناعية الحرجة من اختراقات الشبكة.</span>
+                <span>Absolute security through isolated sandboxing. Shields critical infrastructure from network vulnerabilities.</span>
               </li>
               <li className="flex items-start gap-4">
-                <div className="mt-1 flex-shrink-0 p-1 border border-primary/30 bg-primary/10">
+                <div className="mt-1 shrink-0 p-1 border border-primary/30 bg-primary/10">
                   <Cpu className="w-4 h-4 text-primary" />
                 </div>
-                <span>بصمة ذاكرة ثابتة <span dir="ltr">O(1)</span> عبر تحديثات النقاط المركزية المتكررة. لا تنفد ذاكرة <span dir="ltr">SRAM</span> أبداً.</span>
+                <span>O(1) memory footprint during centroid updates. Guaranteed never to run out of SRAM.</span>
               </li>
             </ul>
           </div>
           
           <div className="relative aspect-square md:aspect-video xl:aspect-square bg-[radial-gradient(circle_at_center,rgba(0,255,65,0.06)_0%,transparent_70%)] border border-border flex items-center justify-center overflow-hidden group">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(135,255,135,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(135,255,135,0.02)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(135,255,135,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(135,255,135,0.02)_1px,transparent_1px)] bg-size-[30px_30px] pointer-events-none" />
             
             <div className="absolute top-0 right-0 w-full h-[2px] bg-primary/50 shadow-[0_0_10px_hsl(var(--primary))] animate-crt-scan z-20 pointer-events-none" />
             
@@ -61,7 +61,7 @@ export function Intelligence() {
               
               <div className="flex-1 flex flex-col gap-4">
                 <div className="flex-1 border border-border bg-black flex flex-col justify-center px-6 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
+                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
                   <div className="w-full flex justify-between items-center text-xs md:text-sm font-mono relative z-10">
                     <span className="text-muted-foreground">TENSOR_STREAM IN</span>
                     <span className="text-primary animate-pulse">0x8F9A...</span>

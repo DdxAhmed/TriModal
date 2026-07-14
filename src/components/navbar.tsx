@@ -19,17 +19,17 @@ export function Navbar() {
                 : 'text-muted-foreground'
             }`}
           >
-            المحاكي اللحظي
+            Home & Blog
           </Link>
           <Link 
             href="/article" 
             className={`hover:text-primary transition-all duration-200 cursor-pointer ${
-              location === '/article' 
+              location.startsWith('/article') 
                 ? 'text-primary font-bold shadow-[0_2px_0_hsl(var(--primary))]' 
                 : 'text-muted-foreground'
             }`}
           >
-            الدراسة الفنية والمقال
+            Articles & Technical Study
           </Link>
         </div>
       </div>

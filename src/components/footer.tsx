@@ -4,11 +4,11 @@ export function Footer() {
       <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-          <span>النظام.متصل // SYS.ONLINE</span>
+          <span>SYSTEM.ACTIVE // SYS.ONLINE</span>
         </div>
         
         <p className="opacity-60 font-sans text-sm">
-          نموذج بحثي // تشخيص الأجهزة متعدد الفيزياء // غير مخصص للنشر الفعلي
+          Research Prototype // Multi-Physics Device Diagnostics // Academic Demonstration Only
         </p>
         
         <div className="opacity-60" dir="ltr">
