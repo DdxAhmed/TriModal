@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { 
   ArrowLeft, 
@@ -40,6 +41,16 @@ interface ArticleProps {
 export default function Article({ params }: ArticleProps) {
   const currentId = params?.id || 'edge-prognostics-main';
   const article = articles.find(a => a.id === currentId) || articles[0];
+
+  useEffect(() => {
+    if (article) {
+      document.title = `${article.title} | Tri-Modal Edge Diagnostics`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute("content", article.excerpt);
+      }
+    }
+  }, [article]);
 
   return (
     <main className="min-h-screen bg-background text-foreground crt-overlay py-24 select-none selection:bg-primary/30 selection:text-primary" dir="ltr">

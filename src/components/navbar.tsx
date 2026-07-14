@@ -11,23 +11,21 @@ export function Navbar() {
           <span className="font-bold tracking-widest" dir="ltr">ESP32_PROGNOSTICS</span>
         </Link>
         <div className="flex gap-8 font-sans">
-          <Link 
-            href="/" 
-            className={`hover:text-primary transition-all duration-200 cursor-pointer ${
-              location === '/' 
-                ? 'text-primary font-bold shadow-[0_2px_0_hsl(var(--primary))]' 
+          <Link
+            href="/"
+            className={`hover:text-primary transition-all duration-200 cursor-pointer ${location === '/'
+                ? 'text-primary font-bold shadow-[0_2px_0_hsl(var(--primary))]'
                 : 'text-muted-foreground'
-            }`}
+              }`}
           >
             Home & Blog
           </Link>
-          <Link 
-            href="/article" 
-            className={`hover:text-primary transition-all duration-200 cursor-pointer ${
-              location.startsWith('/article') 
-                ? 'text-primary font-bold shadow-[0_2px_0_hsl(var(--primary))]' 
+          <Link
+            href="/article"
+            className={`hover:text-primary transition-all duration-200 cursor-pointer ${location.startsWith('/article')
+                ? 'text-primary font-bold shadow-[0_2px_0_hsl(var(--primary))]'
                 : 'text-muted-foreground'
-            }`}
+              }`}
           >
             Articles & Technical Study
           </Link>
