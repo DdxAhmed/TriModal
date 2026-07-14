@@ -26,7 +26,28 @@
 
 <body>
   <div id="root"></div>
+
+  <!-- Cyber-Glowing Poster Upvote Widget -->
+  <div id="poster-vote-widget" style="z-index: 9999;" class="fixed bottom-6 right-6 font-mono bg-card/95 border border-primary p-5 w-80 rounded-lg shadow-[0_0_20px_rgba(0,255,65,0.2),inset_0_0_15px_rgba(0,255,65,0.1)] transition-all duration-300">
+    <div class="flex justify-between items-center mb-3 border-b border-primary/30 pb-2">
+      <span class="text-[11px] font-bold text-primary tracking-widest">POSTER_VOTE_SYS</span>
+      <span id="vote-badge" class="bg-primary text-black px-2 py-0.5 rounded font-black text-xs shadow-[0_0_8px_hsl(var(--primary))] min-w-[20px] text-center">...</span>
+    </div>
+    
+    <div id="vote-input-container" class="mb-3">
+      <input type="tel" id="userPhone" placeholder="Enter Mobile Number to Vote" class="w-full bg-black/50 border border-primary/50 text-primary p-2.5 text-xs font-mono rounded outline-none focus:border-primary focus:shadow-[0_0_8px_rgba(0,255,65,0.3)] transition-all duration-200" />
+    </div>
+
+    <button id="vote-btn" class="w-full flex items-center justify-center gap-2 bg-primary text-black font-bold p-2.5 text-xs rounded border border-primary hover:shadow-[0_0_15px_rgba(0,255,65,0.4)] cursor-pointer transition-all duration-300 uppercase tracking-wider outline-none">
+      <svg id="vote-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m18 15-6-6-6 6"/>
+      </svg>
+      <span id="vote-btn-text">SUBMIT & VOTE</span>
+    </button>
+  </div>
+
   <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="/src/app.js"></script>
 </body>
 
 </html>
