@@ -8,7 +8,7 @@ export function Navbar() {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-3 text-primary hover:opacity-85 transition-opacity cursor-pointer">
           <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse-fast shadow-[0_0_8px_hsl(var(--primary))]" />
-          <span className="font-bold tracking-widest" dir="ltr">ESP32_PROGNOSTICS</span>
+          <span className="font-bold tracking-widest" dir="ltr">EDGEGUARD_AI</span>
         </Link>
         <div className="flex gap-8 font-sans">
           <Link

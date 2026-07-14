@@ -18,7 +18,7 @@ export function Hero() {
         >
           <div className="flex items-center gap-4 mb-8 text-primary font-mono text-xs md:text-sm tracking-wider">
             <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse-fast shadow-[0_0_8px_hsl(var(--primary))]" />
-            <span dir="ltr">STATUS: ACTIVE // BARE-METAL ESP32 PROGNOSTICS</span>
+            <span dir="ltr">STATUS: ACTIVE // EDGEGUARD_AI ENGINE</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-sans tracking-tight mb-8 text-foreground glow-text leading-[1.2]">
@@ -31,15 +31,15 @@ export function Hero() {
 
           <div className="flex flex-wrap gap-4 font-mono text-sm">
             <div className="flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-3 shadow-[inset_0_0_20px_rgba(0,255,65,0.05)]">
-              <Zap className="text-primary w-5 h-5" />
+              <Zap className="text-primary w-5 h-5" aria-hidden="true" />
               <span className="text-foreground">Cloudless Edge AI</span>
             </div>
             <div className="flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-3 shadow-[inset_0_0_20px_rgba(0,255,65,0.05)]">
-              <Activity className="text-primary w-5 h-5" />
+              <Activity className="text-primary w-5 h-5" aria-hidden="true" />
               <span className="text-foreground">Multi-Physics Fusion</span>
             </div>
             <div className="flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-3 shadow-[inset_0_0_20px_rgba(0,255,65,0.05)]">
-              <ShieldAlert className="text-primary w-5 h-5 animate-pulse-fast" />
+              <ShieldAlert className="text-primary w-5 h-5 animate-pulse-fast" aria-hidden="true" />
               <span className="text-foreground font-bold">Trip Command &lt; 5ms</span>
             </div>
           </div>

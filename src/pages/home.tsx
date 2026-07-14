@@ -10,10 +10,10 @@ import { Footer } from '@/components/footer';
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Tri-Modal Edge Predictive Maintenance Suite | Home & Blog";
+    document.title = "EdgeGuard AI - Tri-Modal Predictive Maintenance & Edge AI Motor Protection";
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute("content", "Explore in-depth technical blogs and research on bare-metal multi-physics sensor fusion and edge AI anomaly detection on ESP32 microcontrollers.");
+      metaDesc.setAttribute("content", "EdgeGuard AI: A bare-metal ESP32 predictive maintenance platform. Fusing kinetic, acoustic, and magnetic data with on-device TinyML for sub-5ms motor protection.");
     }
   }, []);
 

@@ -12,12 +12,12 @@ export function Impact() {
           
           <div className="flex-1 w-full relative">
             <div className="relative group">
-              <h2 className="text-5xl md:text-[5rem] lg:text-[6rem] font-bold font-sans tracking-tight text-primary/90 glow-text mb-4 leading-none">
+              <div className="text-5xl md:text-[5rem] lg:text-[6rem] font-bold font-sans tracking-tight text-primary/90 glow-text mb-4 leading-none">
                 $<span dir="ltr">50</span> BILLION
-              </h2>
-              <h2 className="absolute top-0 right-0 text-5xl md:text-[5rem] lg:text-[6rem] font-bold font-sans tracking-tight text-destructive/50 leading-none opacity-0 group-hover:opacity-100 group-hover:animate-glitch pointer-events-none">
+              </div>
+              <div className="absolute top-0 right-0 text-5xl md:text-[5rem] lg:text-[6rem] font-bold font-sans tracking-tight text-destructive/50 leading-none opacity-0 group-hover:opacity-100 group-hover:animate-glitch pointer-events-none">
                 $<span dir="ltr">50</span> BILLION
-              </h2>
+              </div>
             </div>
             
             <div className="h-px w-full bg-border mb-6 relative">

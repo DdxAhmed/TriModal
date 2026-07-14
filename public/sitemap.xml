@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://trimodal.pages.dev/</loc>
+    <loc>https://edgeguard.ai/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://trimodal.pages.dev/article/edge-prognostics-main</loc>
+    <loc>https://edgeguard.ai/article/edge-prognostics-main</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://trimodal.pages.dev/article/freertos-multitasking</loc>
+    <loc>https://edgeguard.ai/article/freertos-multicore</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://trimodal.pages.dev/article/tinyml-anomaly</loc>
+    <loc>https://edgeguard.ai/article/tinyml-anomaly</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://trimodal.pages.dev/article/hardware-schematics</loc>
+    <loc>https://edgeguard.ai/article/hardware-schematics</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

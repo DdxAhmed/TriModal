@@ -18,7 +18,7 @@ export const articles: ArticleData[] = [
   {
     id: 'edge-prognostics-main',
     title: 'Silent Guardians of the Factory: How Edge Computing and AI are Revolutionizing Predictive Maintenance',
-    excerpt: 'An in-depth technical study on transitioning from traditional reactive protection systems to predicting electric motor faults days before they happen, using multi-physics sensor fusion on low-cost microcontrollers.',
+    excerpt: 'Executive Summary: This paper demonstrates that low-cost edge computing utilizing microcontrollers can predict electrical motor failures before they occur by fusing kinetic, acoustic and magnetic data streams. Traditional thermal relays rely on Joule heating (P=I²R) and are structurally blind; by the time they trip, the windings have already burned. This system cuts processing latency to microsecond levels on-device.',
     date: 'July 10, 2026',
     readTime: '12 min read',
     category: 'RESEARCH PAPER',
@@ -26,7 +26,7 @@ export const articles: ArticleData[] = [
     content: (
       <div className="space-y-8 font-sans leading-relaxed text-muted-foreground">
         <p className="text-xl text-foreground/90 font-sans leading-relaxed border-l-4 pl-4 border-primary/70">
-          In the era of Industry 4.0, the efficiency of production lines is no longer measured solely by how fast machines run, but by our ability to keep them running without unplanned downtime. This research aims to unpack the mechanics of predictive maintenance and present technical implementations running locally on embedded hardware.
+          Executive Summary: This paper demonstrates that low-cost edge computing utilizing microcontrollers can predict electrical motor failures before they occur by fusing kinetic, acoustic and magnetic data streams. Traditional thermal relays rely on Joule heating (P=I²R) and are structurally blind; by the time they trip, the windings have already burned. This system cuts processing latency to microsecond levels on-device.
         </p>
 
         <div>
