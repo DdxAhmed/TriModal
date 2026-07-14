@@ -11,11 +11,6 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to MongoDB and then initialize counter
-connectDB().then(() => {
-  initVoteCounter();
-});
-
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -32,7 +27,15 @@ app.get('/*splat', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
-// Start server
+// Start server immediately and connect to MongoDB in the background
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  
+  connectDB().then((dbConnected) => {
+    if (dbConnected) {
+      initVoteCounter();
+    } else {
+      console.warn('Warning: Server started but MongoDB connection failed. Database operations will fail.');
+    }
+  });
 });
