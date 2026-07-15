@@ -7,7 +7,10 @@
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
     "build": "vite build --config vite.config.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
-    "start": "node server/index.js",
+    "start": "node --enable-source-maps TriModal_Server/dist/index.mjs",
+    "build:server": "pnpm -C TriModal_Server run build",
+    "dev:server": "pnpm -C TriModal_Server run dev",
+    "start:server": "pnpm -C TriModal_Server run start",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {

@@ -9,6 +9,7 @@ import { Preloader } from '@/components/preloader';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 
 const Article = lazy(() => import('@/pages/article'));
+const LiveCounter = lazy(() => import('@/pages/live-counter'));
 const queryClient = new QueryClient();
 
 function Router() {
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/article" component={Article} />
         <Route path="/article/:id" component={Article} />
+        <Route path="/live" component={LiveCounter} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>

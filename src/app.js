@@ -137,18 +137,25 @@ function initVoteSystem() {
     return;
   }
 
-  // Fetch initial total votes
-  fetch('/api/vote/count')
-    .then(res => {
-      if (!res.ok) throw new Error();
-      return res.json();
-    })
-    .then(data => {
-      voteBadge.textContent = data.totalVotes;
-    })
-    .catch(() => {
-      voteBadge.textContent = '0';
-    });
+  // Fetch total votes periodically
+  function updateGlobalCount() {
+    fetch('/api/vote/count')
+      .then(res => {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .then(data => {
+        const currentCount = data.totalVotes ?? data.count ?? 0;
+        voteBadge.textContent = currentCount;
+      })
+      .catch(() => {
+        if (voteBadge.textContent === '...') {
+          voteBadge.textContent = '0';
+        }
+      });
+  }
+  updateGlobalCount();
+  const pollInterval = setInterval(updateGlobalCount, 2500);
 
   // Check if we have a saved phone number
   const savedPhone = localStorage.getItem('voted_phone_number');
@@ -250,7 +257,7 @@ function initVoteSystem() {
         .then(async res => {
           const data = await res.json();
           voteBtn.disabled = false;
-          if (res.status === 200) {
+          if (res.status === 200 || res.status === 201) {
             localStorage.setItem('voted_phone_number', phoneNumber);
             voteBadge.textContent = data.totalVotes;
             setUnvoteState(voteBtn, userPhone, widget, phoneNumber);

@@ -1,0 +1,9 @@
+node_modules
+dist
+TriModal_Server/node_modules
+TriModal_Server/dist
+.tsbuildinfo
+.env
+.git
+.gitignore
+Dockerfile

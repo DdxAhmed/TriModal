@@ -29,6 +29,15 @@ export function Navbar() {
           >
             Articles & Technical Study
           </Link>
+          <Link
+            href="/live"
+            className={`hover:text-primary transition-all duration-200 cursor-pointer ${location === '/live'
+                ? 'text-primary font-bold shadow-[0_2px_0_hsl(var(--primary))]'
+                : 'text-muted-foreground'
+              }`}
+          >
+            🔴 Live Counter
+          </Link>
         </div>
       </div>
     </nav>
