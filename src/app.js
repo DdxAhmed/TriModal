@@ -102,30 +102,31 @@ function setSubmitState(button, input, widget) {
 
   widget.style.borderColor = '';
   widget.style.boxShadow = '';
+  widget.style.display = 'block';
+  // Force reflow
+  widget.offsetHeight;
+  widget.style.opacity = '1';
+  widget.style.transform = 'translateY(0)';
+  widget.style.pointerEvents = 'auto';
 }
 
-// UI State: Unvote / Remove Vote (Red Theme)
-function setUnvoteState(button, input, widget, phoneNumber) {
-  input.disabled = true;
-  input.style.display = 'none';
-  input.value = phoneNumber;
-
-  button.className = 'w-full flex items-center justify-center gap-2 bg-red-500 text-white font-bold p-2.5 text-xs rounded border border-red-500 hover:shadow-[0_0_15px_rgba(239,68,68,0.4)] cursor-pointer transition-all duration-300 uppercase tracking-wider outline-none red-btn';
-  button.style.background = 'rgb(239, 68, 68)';
-  button.style.color = 'rgb(255, 255, 255)';
-  button.style.borderColor = 'rgb(239, 68, 68)';
-  button.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.4)';
-  
-  const text = button.querySelector('#vote-btn-text');
-  if (text) text.textContent = 'UNVOTE / REMOVE VOTE';
-
-  const icon = button.querySelector('#vote-icon');
-  if (icon) {
-    icon.innerHTML = '<path d="m18 9-6 6-6-6"/>';
+// UI State: Unvote / Remove Vote (Hide widget)
+function setUnvoteState(button, input, widget, phoneNumber, immediate = false) {
+  if (immediate) {
+    widget.style.display = 'none';
+    widget.style.opacity = '0';
+    widget.style.transform = 'translateY(20px)';
+    widget.style.pointerEvents = 'none';
+  } else {
+    widget.style.opacity = '0';
+    widget.style.transform = 'translateY(20px)';
+    widget.style.pointerEvents = 'none';
+    setTimeout(() => {
+      if (widget.style.opacity === '0') {
+        widget.style.display = 'none';
+      }
+    }, 300);
   }
-
-  widget.style.borderColor = 'rgb(239, 68, 68)';
-  widget.style.boxShadow = '0 0 20px rgba(239, 68, 68, 0.2), inset 0 0 15px rgba(239, 68, 68, 0.1)';
 }
 
 function initVoteSystem() {
@@ -162,6 +163,12 @@ function initVoteSystem() {
   // Check if we have a saved phone number
   const savedPhone = localStorage.getItem('voted_phone_number');
   if (savedPhone) {
+    // Hide immediately to prevent layout flash on load
+    widget.style.display = 'none';
+    widget.style.opacity = '0';
+    widget.style.transform = 'translateY(20px)';
+    widget.style.pointerEvents = 'none';
+
     // Verify check on page load
     fetch(`${API_BASE}/api/vote/check`, {
       method: 'POST',
@@ -171,14 +178,14 @@ function initVoteSystem() {
       .then(res => res.json())
       .then(data => {
         if (data.exists) {
-          setUnvoteState(voteBtn, userPhone, widget, savedPhone);
+          setUnvoteState(voteBtn, userPhone, widget, savedPhone, true);
         } else {
           localStorage.removeItem('voted_phone_number');
           setSubmitState(voteBtn, userPhone, widget);
         }
       })
       .catch(() => {
-        setUnvoteState(voteBtn, userPhone, widget, savedPhone);
+        setUnvoteState(voteBtn, userPhone, widget, savedPhone, true);
       });
   } else {
     setSubmitState(voteBtn, userPhone, widget);
