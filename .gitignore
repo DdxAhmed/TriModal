@@ -47,3 +47,7 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Ignore local nested git directories
+TriModal_Server/.git/
+TriModal_Server/git_folder_backup/
