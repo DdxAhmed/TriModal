@@ -24,6 +24,8 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+const API_BASE = import.meta.env.VITE_API_URL || 'https://trimodalserver-557162805103.europe-west1.run.app';
+
 // Helper to show custom cyber-glowing toast alerts
 function showToast(message, type = 'success') {
   const container = document.getElementById('vote-toast-container') || (() => {
@@ -139,7 +141,7 @@ function initVoteSystem() {
 
   // Fetch total votes periodically
   function updateGlobalCount() {
-    fetch('/api/vote/count')
+    fetch(`${API_BASE}/api/vote/count`)
       .then(res => {
         if (!res.ok) throw new Error();
         return res.json();
@@ -161,7 +163,7 @@ function initVoteSystem() {
   const savedPhone = localStorage.getItem('voted_phone_number');
   if (savedPhone) {
     // Verify check on page load
-    fetch('/api/vote/check', {
+    fetch(`${API_BASE}/api/vote/check`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phoneNumber: savedPhone })
@@ -187,7 +189,7 @@ function initVoteSystem() {
     const phoneNumber = userPhone.value.trim();
     if (!phoneNumber || localStorage.getItem('voted_phone_number')) return;
 
-    fetch('/api/vote/check', {
+    fetch(`${API_BASE}/api/vote/check`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phoneNumber })
@@ -216,7 +218,7 @@ function initVoteSystem() {
 
       voteBtn.disabled = true;
 
-      fetch('/api/unvote', {
+      fetch(`${API_BASE}/api/unvote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber })
@@ -249,7 +251,7 @@ function initVoteSystem() {
 
       voteBtn.disabled = true;
 
-      fetch('/api/vote', {
+      fetch(`${API_BASE}/api/vote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber })

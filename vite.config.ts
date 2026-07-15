@@ -31,7 +31,7 @@ export default defineConfig({
     allowedHosts: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://trimodalserver-557162805103.europe-west1.run.app',
         changeOrigin: true,
       },
     },

@@ -11,7 +11,6 @@ import {
   TrendingUp,
   Flame,
   Phone,
-  HelpCircle,
   Hash
 } from 'lucide-react';
 import { 
@@ -94,6 +93,8 @@ function Digit({ value }: DigitProps) {
   );
 }
 
+const API_BASE = import.meta.env.VITE_API_URL || 'https://trimodalserver-557162805103.europe-west1.run.app';
+
 // -------------------------------------------------------------
 // Live Counter Page
 // -------------------------------------------------------------
@@ -158,7 +159,7 @@ export default function LiveCounter() {
   // Check if phone has voted on backend
   const checkVoteOnBackend = async (phone: string) => {
     try {
-      const res = await fetch('/api/vote/check', {
+      const res = await fetch(`${API_BASE}/api/vote/check`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber: phone })
@@ -181,31 +182,29 @@ export default function LiveCounter() {
   useEffect(() => {
     const fetchCount = async () => {
       try {
-        const res = await fetch('/api/vote/count');
+        const res = await fetch(`${API_BASE}/api/vote/count`);
         if (!res.ok) throw new Error("Backend response error");
         const data = await res.json();
         const currentCount = data.totalVotes ?? data.count ?? 0;
         
-        setVotesCount((prev) => {
-          // Play synthetic beep sound if vote increases
-          if (prevVotesCountRef.current !== null && currentCount > prevVotesCountRef.current) {
-            if (soundEnabled) {
-              playSyntheticBeep(987.77, 0.12); // High beep
-              setTimeout(() => playSyntheticBeep(1318.51, 0.2), 60); // Bouncy double-beep
-            }
-            toast({
-              title: "System Update // تحديث النظام",
-              description: `A new vote has been logged! Total: ${currentCount} // تم تسجيل صوت جديد! الإجمالي: ${currentCount}`,
-              className: "border-primary text-primary bg-black/90 font-mono shadow-[0_0_15px_rgba(0,255,65,0.3)]",
-            });
-          } else if (prevVotesCountRef.current !== null && currentCount < prevVotesCountRef.current) {
-            if (soundEnabled) {
-              playSyntheticBeep(440, 0.2); // Low beep for unvote
-            }
+        // Play synthetic beep sound if vote increases
+        if (prevVotesCountRef.current !== null && currentCount > prevVotesCountRef.current) {
+          if (soundEnabled) {
+            playSyntheticBeep(987.77, 0.12); // High beep
+            setTimeout(() => playSyntheticBeep(1318.51, 0.2), 60); // Bouncy double-beep
           }
-          prevVotesCountRef.current = currentCount;
-          return currentCount;
-        });
+          toast({
+            title: "System Update // تحديث النظام",
+            description: `A new vote has been logged! Total: ${currentCount} // تم تسجيل صوت جديد! الإجمالي: ${currentCount}`,
+            className: "border-primary text-primary bg-black/90 font-mono shadow-[0_0_15px_rgba(0,255,65,0.3)]",
+          });
+        } else if (prevVotesCountRef.current !== null && currentCount < prevVotesCountRef.current) {
+          if (soundEnabled) {
+            playSyntheticBeep(440, 0.2); // Low beep for unvote
+          }
+        }
+        prevVotesCountRef.current = currentCount;
+        setVotesCount(currentCount);
 
         // Add to history for chart
         const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -251,7 +250,7 @@ export default function LiveCounter() {
 
     setIsLoading(true);
     try {
-      const res = await fetch('/api/vote', {
+      const res = await fetch(`${API_BASE}/api/vote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber: phone })
@@ -308,7 +307,7 @@ export default function LiveCounter() {
 
     setIsLoading(true);
     try {
-      const res = await fetch('/api/unvote', {
+      const res = await fetch(`${API_BASE}/api/unvote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phoneNumber: phone })
