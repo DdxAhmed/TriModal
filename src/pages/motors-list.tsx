@@ -70,20 +70,20 @@ export default function MotorsList() {
         </section>
 
         {/* Filters & Search Control Bar */}
-        <section className="mb-8 flex flex-col md:flex-row gap-4 justify-between items-start md:items-center bg-card/40 border border-border/40 backdrop-blur-md p-4 rounded-xl">
+        <section className="mb-8 flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center glass-card p-4 sm:p-5 rounded-xl">
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-mono text-xs text-muted-foreground mr-2 flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5" />
+            <span className="font-mono text-xs text-muted-foreground mr-1.5 flex items-center gap-1.5 shrink-0">
+              <Filter className="w-3.5 h-3.5 text-primary" />
               Category:
             </span>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`font-mono text-xs px-3 py-1.5 rounded-lg border transition-all cursor-pointer ${
+                className={`font-mono text-xs px-3.5 py-1.5 rounded-lg border transition-all cursor-pointer hover-lift ${
                   selectedCategory === cat
-                    ? 'bg-primary text-black border-primary font-bold shadow-[0_0_10px_hsl(var(--primary)/0.4)]'
+                    ? 'bg-blue-500 text-black border-blue-500 font-bold shadow-[0_0_12px_rgba(59,130,246,0.5)]'
                     : 'bg-white/5 hover:bg-white/10 text-muted-foreground border-white/10'
                 }`}
               >
@@ -93,15 +93,15 @@ export default function MotorsList() {
           </div>
 
           {/* Family & Search Controls */}
-          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
             {/* Family Select */}
             <div className="flex items-center gap-2 w-full sm:w-auto">
-              <label htmlFor="family-filter" className="font-mono text-xs text-muted-foreground">Family:</label>
+              <label htmlFor="family-filter" className="font-mono text-xs text-muted-foreground shrink-0">Family:</label>
               <select
                 id="family-filter"
                 value={selectedFamily}
                 onChange={(e) => setSelectedFamily(e.target.value)}
-                className="bg-background border border-border/50 text-foreground font-mono text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-primary cursor-pointer w-full sm:w-auto"
+                className="bg-black/70 border border-white/15 text-foreground font-mono text-xs rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 cursor-pointer w-full sm:w-auto"
               >
                 {families.map((fam) => (
                   <option key={fam} value={fam}>
@@ -112,14 +112,14 @@ export default function MotorsList() {
             </div>
 
             {/* Search Input */}
-            <div className="relative w-full sm:w-48">
+            <div className="relative w-full sm:w-56">
               <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search motor..."
+                placeholder="Search motor topology..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-background border border-border/50 text-foreground font-mono text-xs rounded-lg pl-8 pr-3 py-1.5 w-full focus:outline-none focus:border-primary placeholder:text-muted-foreground/60"
+                className="bg-black/70 border border-white/15 text-foreground font-mono text-xs rounded-lg pl-8 pr-3 py-2 w-full focus:outline-none focus:border-blue-400 placeholder:text-muted-foreground/60"
               />
             </div>
           </div>

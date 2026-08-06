@@ -13,10 +13,12 @@ export const MotorCard: React.FC<MotorCardProps> = ({ motor }) => {
   return (
     <Link
       href={`/motors/${motor.slug}`}
-      className="group relative block bg-card/60 hover:bg-card/90 border border-border/40 hover:border-primary/50 rounded-xl p-6 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-primary/10 hover:-translate-y-1 overflow-hidden"
+      className={`group relative block ${
+        isDC ? 'glass-card' : 'glass-card-blue'
+      } rounded-2xl p-6 transition-all duration-300 shadow-lg hover:scale-[1.02] hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] active:scale-98 cursor-pointer overflow-hidden`}
     >
       {/* Top ambient glow line on hover */}
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
       {/* Header Badges */}
       <div className="flex items-center justify-between gap-2 mb-4">

@@ -155,7 +155,7 @@ export default function MotorDetail() {
           ref={tabListRef}
           role="tablist"
           aria-label="Motor Details Navigation"
-          className="flex border-b border-border/40 gap-2 overflow-x-auto mb-8 pb-1 scrollbar-none"
+          className="flex border-b border-white/10 gap-2 overflow-x-auto mb-8 pb-1 scrollbar-none max-w-full"
         >
           {tabs.map((tab, idx) => {
             const isActive = activeTab === tab.id;
@@ -169,9 +169,9 @@ export default function MotorDetail() {
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveTab(tab.id)}
                 onKeyDown={(e) => handleKeyDown(e, idx)}
-                className={`flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-3 rounded-t-xl border-t border-x transition-all whitespace-nowrap cursor-pointer focus:outline-none focus:ring-1 focus:ring-primary ${
+                className={`flex items-center gap-2 font-mono text-xs md:text-sm px-5 py-3 rounded-t-xl border-t border-x transition-all whitespace-nowrap cursor-pointer shrink-0 focus:outline-none ${
                   isActive
-                    ? 'bg-card text-primary border-border/60 border-b-transparent shadow-[0_-2px_10px_rgba(0,0,0,0.5)] font-bold'
+                    ? 'glass-card-blue text-blue-400 border-blue-500/50 border-b-transparent font-bold shadow-[0_-2px_12px_rgba(59,130,246,0.3)]'
                     : 'bg-transparent text-muted-foreground border-transparent hover:text-foreground hover:bg-white/5'
                 }`}
               >
@@ -192,9 +192,9 @@ export default function MotorDetail() {
           hidden={activeTab !== 'overview'}
           className="space-y-8"
         >
-          <div className="bg-card/40 border border-border/40 backdrop-blur-md rounded-xl p-6 md:p-8">
+          <div className="glass-card rounded-2xl p-6 md:p-8">
             <h2 className="font-mono text-xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <Binary className="w-5 h-5 text-primary" />
+              <Binary className="w-5 h-5 text-blue-400" />
               <span>Core Physics & Governing Engineering Equations</span>
             </h2>
 
@@ -202,16 +202,16 @@ export default function MotorDetail() {
               {motor.keyEquations.map((eq, idx) => (
                 <div
                   key={idx}
-                  className="bg-background/80 border border-border/50 rounded-xl p-6 glow-border"
+                  className="bg-black/60 border border-white/10 rounded-xl p-6 hover-lift"
                 >
-                  <div className="flex items-center justify-between mb-3 border-b border-border/30 pb-2">
-                    <span className="font-mono text-sm font-semibold text-primary">
+                  <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+                    <span className="font-mono text-sm font-semibold text-blue-400">
                       EQ.{idx + 1}: {eq.label}
                     </span>
                   </div>
 
                   {/* KaTeX Renderer */}
-                  <div className="my-4 bg-black/40 border border-primary/20 rounded-lg p-4 text-center">
+                  <div className="my-4 bg-black/80 border border-blue-500/30 rounded-lg p-4 text-center">
                     <KaTeXFormula latex={eq.latex} displayMode={true} />
                   </div>
 
@@ -233,22 +233,38 @@ export default function MotorDetail() {
           className="space-y-6"
         >
           <div className="grid grid-cols-1 gap-6">
-            {motor.failureModes.map((failure, idx) => (
-              <div
-                key={idx}
-                className="bg-card/40 border border-border/40 backdrop-blur-md rounded-xl p-6 md:p-8 hover:border-amber/40 transition-colors"
-              >
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  {/* Left Column: Details & Resolved Related Equations */}
-                  <div className="flex-1 space-y-4">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs text-amber font-bold bg-amber/10 border border-amber/30 px-2.5 py-1 rounded">
-                        FAULT_MODE 0{idx + 1}
-                      </span>
-                      <h3 className="font-mono text-xl font-bold text-foreground">
-                        {failure.title}
-                      </h3>
-                    </div>
+            {motor.failureModes.map((failure, idx) => {
+              // Determine failure type color tag
+              const isThermal = /thermal|heating|aging|burn/i.test(failure.title + failure.description);
+              const isMagnetic = /magnetic|flux|demagnetization|electrical|mmf|short/i.test(failure.title + failure.description);
+              const faultBadgeClass = isThermal
+                ? 'bg-red-500/15 text-red-400 border-red-500/40'
+                : isMagnetic
+                ? 'bg-cyan-500/15 text-cyan-400 border-cyan-500/40'
+                : 'bg-amber-500/15 text-amber-400 border-amber-500/40';
+
+              const glassTheme = isThermal
+                ? 'border-red-500/30 bg-red-500/5'
+                : isMagnetic
+                ? 'glass-card'
+                : 'glass-card-amber';
+
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-2xl p-6 md:p-8 hover-lift transition-all ${glassTheme}`}
+                >
+                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                    {/* Left Column: Details & Resolved Related Equations */}
+                    <div className="flex-1 space-y-4">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className={`font-mono text-xs font-bold border px-2.5 py-1 rounded-lg ${faultBadgeClass}`}>
+                          {isThermal ? 'THERMAL FAULT' : isMagnetic ? 'ELECTROMAGNETIC FAULT' : 'MECHANICAL FAULT'} 0{idx + 1}
+                        </span>
+                        <h3 className="font-sans text-xl font-bold text-foreground">
+                          {failure.title}
+                        </h3>
+                      </div>
 
                     <p className="font-sans text-sm text-muted-foreground leading-relaxed">
                       {failure.description}
@@ -326,7 +342,8 @@ export default function MotorDetail() {
                   </div>
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         </div>
 

@@ -12,22 +12,14 @@ export function Preloader({ onComplete }: PreloaderProps) {
   const [isDone, setIsDone] = useState(false);
 
   const bootLogs = [
-    'SYSTEM BOOT INITIATED...',
-    'CORE 0 [PRO_CPU]: ACTIVE // Xtensa LX6 @ 240MHz',
-    'CORE 1 [APP_CPU]: ACTIVE // COMMUNICATIONS LAYER',
-    'CALIBRATING TRI-MODAL SENSORS...',
-    'MPU6050 [ACCELEROMETER/GYRO]: ONLINE',
-    'INMP441 [MEMS MICROPHONE]: ONLINE',
-    'A3144 [HALL EFFECT ARRAY]: ONLINE',
-    'ESTABLISHING TRI-MODAL SENSOR FUSION MATRIX...',
-    'LOADING INCREMENTAL K-MEANS TINYML MODEL...',
-    'SETTING UP SAFE-FAIL INTERRUPTS < 5ms...',
-    'BOOT SEQUENCE 100% COMPLETE. SYSTEM SECURE.'
+    '[PHASE 1] CORE INIT: ESP32 Dual-Core LX6 @ 240MHz Online',
+    '[PHASE 2] SENSOR ARRAY CALIBRATION: MPU6050 + INMP441 + A3144 Active',
+    '[PHASE 3] SYSTEM READY: TinyML Clustering & Sub-5ms Interrupts Secured'
   ];
 
   useEffect(() => {
-    // Progress interval
-    const duration = 2800; // 2.8 seconds boot
+    // Streamlined fast boot duration (1.6s)
+    const duration = 1600;
     const intervalTime = 40;
     const steps = duration / intervalTime;
     let stepCount = 0;
