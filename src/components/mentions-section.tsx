@@ -1,5 +1,6 @@
 import { Facebook, Link2, ExternalLink } from 'lucide-react';
 import { useReveal } from '@/hooks/use-reveal';
+import { useLanguage } from '@/hooks/use-language';
 
 interface Mention {
   source: string;
@@ -11,27 +12,34 @@ interface Mention {
 
 export function MentionsSection() {
   const { ref, isVisible } = useReveal();
+  const { language } = useLanguage();
 
   const mentions: Mention[] = [
     {
-      source: "Facebook Showcase",
-      title: "Embedded Systems Community Spotlight",
-      description: "Our tri-modal predictive maintenance prototype was featured in the community, showcasing the hardware integration and ESP32 multi-threading performance.",
+      source: language === 'en' ? "Facebook Showcase" : "استعراض مجتمع فيسبوك",
+      title: language === 'en' 
+        ? "Embedded Systems Community Spotlight" 
+        : "تسليط الضوء في مجتمعات الأنظمة المدمجة",
+      description: language === 'en'
+        ? "Our tri-modal predictive maintenance prototype was featured in the community, showcasing the hardware integration and ESP32 multi-threading performance."
+        : "تم استعراض النموذج الأولي للوقاية التنبؤية ثلاثية المحاور في المجتمع البرمجي، مسلطاً الضوء على دمج العتاد وأداء مسارات المعالجة المتعددة لمعالج ESP32.",
       url: "https://www.facebook.com/share/p/192trKKWo5/",
       icon: <Facebook className="w-5 h-5 text-primary" aria-hidden="true" />
     }
   ];
 
   return (
-    <section className="py-20 border-b border-border/30 bg-black/60 relative overflow-hidden" dir="ltr" aria-labelledby="mentions-heading">
+    <section className="py-20 border-b border-border/30 bg-black/60 relative overflow-hidden" dir={language === 'ar' ? 'rtl' : 'ltr'} aria-labelledby="mentions-heading">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,65,0.015)_0%,transparent_70%)] pointer-events-none" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-12">
           <span className="text-sm font-mono text-primary tracking-widest mb-3 uppercase block">
-            // PUBLICITY_AND_MENTIONS
+            {language === 'en' ? '// PUBLICITY_AND_MENTIONS' : '// الإشارات والظهور الإعلامي'}
           </span>
-          <h2 id="mentions-heading" className="text-3xl font-sans font-bold text-foreground">Featured In & Mentions</h2>
+          <h2 id="mentions-heading" className="text-3xl font-sans font-bold text-foreground">
+            {language === 'en' ? 'Featured In & Mentions' : 'إشارات وظهور إعلامي'}
+          </h2>
         </div>
 
         <div 
@@ -67,7 +75,7 @@ export function MentionsSection() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-border/20 flex items-center gap-2 text-xs font-mono text-primary/70 group-hover:text-primary transition-colors">
+              <div className="mt-6 pt-4 border-t border-border/20 flex items-center gap-2 text-xs font-mono text-primary/70 group-hover:text-primary transition-colors" dir="ltr">
                 <Link2 className="w-3.5 h-3.5" aria-hidden="true" />
                 <span className="truncate max-w-xs">{mention.url}</span>
               </div>

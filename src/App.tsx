@@ -7,9 +7,12 @@ import Home from '@/pages/home';
 import { Navbar } from '@/components/navbar';
 import { Preloader } from '@/components/preloader';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { LanguageProvider } from '@/hooks/use-language';
 
 const Article = lazy(() => import('@/pages/article'));
 const LiveCounter = lazy(() => import('@/pages/live-counter'));
+const MotorsList = lazy(() => import('@/pages/motors-list'));
+const MotorDetail = lazy(() => import('@/pages/motor-detail'));
 const queryClient = new QueryClient();
 
 function Router() {
@@ -24,6 +27,8 @@ function Router() {
         <Route path="/article" component={Article} />
         <Route path="/article/:id" component={Article} />
         <Route path="/live" component={LiveCounter} />
+        <Route path="/motors" component={MotorsList} />
+        <Route path="/motors/:slug" component={MotorDetail} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
@@ -35,18 +40,20 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <div className="min-h-screen bg-background text-foreground flex flex-col">
-            <Navbar />
-            <div className="flex-1">
-              <Router />
+      <LanguageProvider>
+        <TooltipProvider>
+          {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <div className="min-h-screen bg-background text-foreground flex flex-col">
+              <Navbar />
+              <div className="flex-1">
+                <Router />
+              </div>
             </div>
-          </div>
-        </WouterRouter>
-        <Toaster />
-      </TooltipProvider>
+          </WouterRouter>
+          <Toaster />
+        </TooltipProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

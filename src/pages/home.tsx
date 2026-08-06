@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import { ParticleBackground } from '@/components/ui/particle-background';
 import { Hero } from '@/components/hero';
-import { BlogSection } from '@/components/blog-section';
 import { Impact } from '@/components/impact';
 import { TriModal } from '@/components/tri-modal';
+import { Simulator } from '@/components/simulator';
 import { Intelligence } from '@/components/intelligence';
 import { TeamSection } from '@/components/team-section';
 import { MentionsSection } from '@/components/mentions-section';
@@ -18,13 +19,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-background text-foreground crt-overlay selection:bg-primary/30 selection:text-primary">
+    <main className="min-h-screen bg-background text-foreground crt-overlay selection:bg-primary/30 selection:text-primary relative overflow-hidden">
+      <ParticleBackground />
       <div className="pointer-events-none fixed inset-0 z-50 animate-crt-scan" />
       <Hero />
-      <BlogSection />
-      <Impact />
       <TriModal />
+      <Simulator />
       <Intelligence />
+      <Impact />
       <TeamSection />
       <MentionsSection />
       <Footer />

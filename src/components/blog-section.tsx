@@ -31,17 +31,17 @@ export function BlogSection() {
 
         <div ref={ref} className={`space-y-12 ${isVisible ? 'reveal-visible' : 'reveal-hidden'}`}>
 
-          {/* Featured Article Card */}
+          {/* Featured Article Card (Research Paper - Blue) */}
           {featuredArticle && (
-            <article className="border-2 border-primary/30 bg-card/20 hover:bg-black/40 hover:border-primary/60 transition-all duration-500 overflow-hidden shadow-2xl relative group rounded-xl">
-              <div className="absolute top-0 right-0 w-full h-[2px] bg-linear-to-l from-transparent via-primary/50 to-transparent group-hover:via-primary transition-all duration-700" />
+            <article className="border-2 border-blue-500/40 bg-card/40 hover:bg-black/40 hover:border-blue-500/80 transition-all duration-500 overflow-hidden shadow-2xl relative group rounded-xl glow-border-blue">
+              <div className="absolute top-0 right-0 w-full h-[2px] bg-gradient-to-r from-transparent via-blue-500/60 to-transparent group-hover:via-blue-400 transition-all duration-700" />
               <div className="p-8 md:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
                   {/* Text details */}
                   <div className="lg:col-span-8 space-y-6">
-                    <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-primary">
-                      <Badge className="bg-primary/20 border-primary text-primary hover:bg-primary/30 font-mono">
+                    <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-blue-400">
+                      <Badge className="bg-blue-500/20 border-blue-500/60 text-blue-400 hover:bg-blue-500/30 font-mono">
                         {featuredArticle.category}
                       </Badge>
                       <span className="text-muted-foreground">•</span>
@@ -56,8 +56,8 @@ export function BlogSection() {
                       </span>
                     </div>
 
-                    <h3 className="text-2xl md:text-4xl font-bold font-sans text-foreground leading-[1.3] group-hover:text-primary transition-colors duration-300">
-                      <Link href={`/article/${featuredArticle.id}`} className="hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm">
+                    <h3 className="text-2xl md:text-4xl font-bold font-sans text-foreground leading-[1.3] group-hover:text-blue-400 transition-colors duration-300">
+                      <Link href={`/article/${featuredArticle.id}`} className="hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:rounded-sm">
                         {featuredArticle.title}
                       </Link>
                     </h3>
@@ -69,7 +69,7 @@ export function BlogSection() {
                     <div>
                       <Link
                         href={`/article/${featuredArticle.id}`}
-                        className="inline-flex items-center gap-2 font-mono text-sm text-primary border border-primary/30 hover:border-primary bg-primary/5 hover:bg-primary/10 px-5 py-3 transition-all duration-300 group/btn cursor-pointer shadow-[inset_0_0_10px_rgba(0,255,65,0.02)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:rounded-sm"
+                        className="inline-flex items-center gap-2 font-mono text-sm text-blue-400 border border-blue-500/40 hover:border-blue-400 bg-blue-500/10 hover:bg-blue-500/20 px-5 py-3 transition-all duration-300 group/btn cursor-pointer rounded-lg shadow-[inset_0_0_10px_rgba(59,130,246,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                       >
                         <BookOpen className="w-4 h-4" aria-hidden="true" />
                         <span>Read Full Research Paper</span>
@@ -79,13 +79,13 @@ export function BlogSection() {
                   </div>
 
                   {/* Visual mockup of the article theme */}
-                  <div className="lg:col-span-4 border border-border bg-black/80 p-6 font-mono text-[10px] text-muted-foreground leading-relaxed shadow-inner hidden lg:block relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.01)_1px,transparent_1px)] bg-size-[15px_15px] pointer-events-none" />
-                    <div className="absolute top-0 right-0 w-full h-px bg-primary/20 animate-crt-scan" />
+                  <div className="lg:col-span-4 border border-blue-500/30 bg-black/80 p-6 font-mono text-[10px] text-muted-foreground leading-relaxed shadow-inner hidden lg:block relative overflow-hidden rounded-lg">
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-size-[15px_15px] pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-full h-px bg-blue-400/40 animate-crt-scan" />
 
-                    <div className="flex justify-between border-b border-border pb-1 mb-2 text-primary font-bold">
-                      <span>ARTICLE_LOADER_v1.0</span>
-                      <span>OK</span>
+                    <div className="flex justify-between border-b border-blue-500/30 pb-1 mb-2 text-blue-400 font-bold">
+                      <span>RESEARCH_PAPER_v1.0</span>
+                      <span>PEER_REVIEWED</span>
                     </div>
                     <div className="space-y-1">
                       <span className="text-foreground">// EXECUTIVE_SUMMARY</span>
@@ -93,8 +93,8 @@ export function BlogSection() {
                         This paper demonstrates that low-cost edge computing utilizing microcontrollers can predict electrical motor failures before they occur by fusing kinetic, acoustic and magnetic data streams...
                       </p>
                     </div>
-                    <div className="border-t border-border mt-3 pt-3 flex justify-between items-center text-[9px] text-primary">
-                      <span>SYSTEM: READY</span>
+                    <div className="border-t border-blue-500/30 mt-3 pt-3 flex justify-between items-center text-[9px] text-blue-400">
+                      <span>STATUS: PUBLISHED</span>
                       <span>PAGE: 01/12</span>
                     </div>
                   </div>
@@ -104,49 +104,86 @@ export function BlogSection() {
             </article>
           )}
 
-          {/* Sub-articles grid */}
+          {/* Sub-articles grid with 3 distinct colors */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6">
-            {otherArticles.map((art) => (
-              <article
-                key={art.id}
-                className="border border-border/50 bg-card/10 hover:bg-black/30 hover:border-primary/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500 flex flex-col justify-between group overflow-hidden relative rounded-xl"
-              >
-                <div className="absolute top-0 right-0 w-full h-px bg-linear-to-l from-transparent via-primary/0 to-transparent group-hover:via-primary/55 transition-all duration-500" />
-                <div className="p-6 md:p-8 flex flex-col justify-between h-full space-y-6">
+            {otherArticles.map((art, index) => {
+              // Map index to specific colors:
+              // Index 0 (Hardware Guide) -> Emerald Green (#10b981)
+              // Index 1 (TinyML Algorithms) -> Amber/Orange (#f59e0b)
+              // Index 2 (FreeRTOS Scheduling) -> Violet/Purple (#8b5cf6)
+              const colorSchemes = [
+                {
+                  border: 'border-emerald-500/40 hover:border-emerald-400',
+                  bgHover: 'hover:bg-emerald-950/20',
+                  glow: 'glow-border-emerald',
+                  topLine: 'via-emerald-400',
+                  badge: 'bg-emerald-500/15 border-emerald-500/50 text-emerald-400',
+                  textHover: 'group-hover:text-emerald-400',
+                  linkText: 'text-emerald-400'
+                },
+                {
+                  border: 'border-amber-500/40 hover:border-amber-400',
+                  bgHover: 'hover:bg-amber-950/20',
+                  glow: 'glow-border-amber',
+                  topLine: 'via-amber-400',
+                  badge: 'bg-amber-500/15 border-amber-500/50 text-amber-400',
+                  textHover: 'group-hover:text-amber-400',
+                  linkText: 'text-amber-400'
+                },
+                {
+                  border: 'border-purple-500/40 hover:border-purple-400',
+                  bgHover: 'hover:bg-purple-950/20',
+                  glow: 'glow-border-purple',
+                  topLine: 'via-purple-400',
+                  badge: 'bg-purple-500/15 border-purple-500/50 text-purple-400',
+                  textHover: 'group-hover:text-purple-400',
+                  linkText: 'text-purple-400'
+                }
+              ];
+              const scheme = colorSchemes[index % colorSchemes.length];
 
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono text-primary">
-                      <Badge variant="outline" className="border-primary/30 text-primary font-mono text-[9px] py-0 px-2 bg-primary/5">
-                        {art.category.split(' // ')[0]}
-                      </Badge>
-                      <span className="text-muted-foreground">•</span>
-                      <span>{art.readTime}</span>
+              return (
+                <article
+                  key={art.id}
+                  className={`border ${scheme.border} bg-card/30 ${scheme.bgHover} hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500 flex flex-col justify-between group overflow-hidden relative rounded-xl ${scheme.glow}`}
+                >
+                  <div className={`absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent ${scheme.topLine} to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500`} />
+                  <div className="p-6 md:p-8 flex flex-col justify-between h-full space-y-6">
+
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono">
+                        <Badge variant="outline" className={`${scheme.badge} font-mono text-[9px] py-0.5 px-2.5`}>
+                          {art.category.split(' // ')[0]}
+                        </Badge>
+                        <span className="text-muted-foreground">•</span>
+                        <span className="text-muted-foreground">{art.readTime}</span>
+                      </div>
+
+                      <h3 className={`text-xl font-bold font-sans text-foreground leading-[1.4] ${scheme.textHover} transition-colors duration-300`}>
+                        <Link href={`/article/${art.id}`} className="hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm">
+                          {art.title}
+                        </Link>
+                      </h3>
+
+                      <p className="text-muted-foreground text-sm font-sans leading-relaxed line-clamp-4">
+                        {art.excerpt}
+                      </p>
                     </div>
 
-                    <h3 className="text-xl font-bold font-sans text-foreground leading-[1.4] group-hover:text-primary transition-colors duration-300">
-                      <Link href={`/article/${art.id}`} className="hover:underline cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm">
-                        {art.title}
+                    <div className="pt-4 border-t border-border/30">
+                      <Link
+                        href={`/article/${art.id}`}
+                        className={`inline-flex items-center gap-1.5 font-mono text-xs ${scheme.linkText} hover:opacity-80 transition-opacity cursor-pointer group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm`}
+                      >
+                        <span>Read Article</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
                       </Link>
-                    </h3>
+                    </div>
 
-                    <p className="text-muted-foreground text-sm font-sans leading-relaxed line-clamp-4">
-                      {art.excerpt}
-                    </p>
                   </div>
-
-                  <div className="pt-4 border-t border-border/20">
-                    <Link
-                      href={`/article/${art.id}`}
-                      className="inline-flex items-center gap-1.5 font-mono text-xs text-primary hover:opacity-80 transition-opacity cursor-pointer group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:rounded-sm"
-                    >
-                      <span>Read Article</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" aria-hidden="true" />
-                    </Link>
-                  </div>
-
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
 
         </div>
